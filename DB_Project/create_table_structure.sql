@@ -19,7 +19,7 @@ CREATE TABLE dim_regions (
 
 -- Define the "dim_sku_base" table
 CREATE TABLE dim_sku_base (
-    sku_internal_code text PRIMARY KEY NOT NULL,
+    sku_internal_code text PRIMARY KEY,
     sku_internal_name text,
     manufacturer text
 );
@@ -33,7 +33,7 @@ CREATE TABLE dim_dc (
 
 -- Define the "dim_geo_base" table
 CREATE TABLE dim_geo_base (
-    pos_internal_code text PRIMARY KEY NOT NULL,
+    pos_internal_code text PRIMARY KEY,
     region_code SERIAL REFERENCES dim_regions(region_code),
     city text,
     address text
@@ -41,7 +41,7 @@ CREATE TABLE dim_geo_base (
 
 -- Define the "dim_geo_mapping" table
 CREATE TABLE dim_geo_mapping (
-    pos_ext_code text PRIMARY KEY NOT NULL,
+    pos_ext_code text PRIMARY KEY,
     pos_internal_code text REFERENCES dim_geo_base(pos_internal_code)
 );
 
